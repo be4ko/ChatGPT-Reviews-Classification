@@ -1,4 +1,7 @@
 # ChatGPT User Reviews Classification using RNN and Word Embeddings
+![GitHub](https://img.shields.io/badge/Python-3.8%2B-blue)
+![GitHub](https://img.shields.io/badge/Library-TensorFlow%2FKeras-orange)
+![GitHub](https://img.shields.io/badge/License-MIT-green)
 
 ## 📝 Project Description
 This project implements a complete sentiment classification workflow on a real-world dataset of ChatGPT user reviews. We preprocess the text data, convert it into padded integer sequences via word embeddings, and train two neural architectures—SimpleRNN and LSTM—to compare performance on unseen test data.
@@ -14,17 +17,19 @@ This project implements a complete sentiment classification workflow on a real-w
 
 
 ## 🎯 Objectives
-- Demonstrate an end-to-end NLP pipeline for sentiment analysis  
-- Compare performance between SimpleRNN and LSTM architectures  
-- Showcase the impact of sequence length and train/test split ratio on model accuracy (bonus)
-
+- Preprocess raw text data for NLP tasks.
+- Train and compare RNN and LSTM models for sentiment classification.
+- Achieve high accuracy in predicting user review sentiments.
+- Analyze the impact of hyperparameters (e.g., train-test split ratio, padding length).
 
 ## 🛠️ Technologies Used
-- **Python 3.8+**  
-- **Keras / TensorFlow** – RNN & embedding layers  
-- **NLTK** – tokenization & stopword removal  
-- **pandas** – data loading & manipulation  
-- **scikit-learn** – train/test splitting & label encoding  
+- **Programming Language**: Python
+- **Libraries**:
+  - `TensorFlow/Keras` for model building.
+  - `NLTK` for text preprocessing.
+  - `pandas` for data handling.
+  - `scikit-learn` for data splitting.
+- **Tools**: Jupyter Notebook/Google Colab.
 
 
 ## 🤖 Machine Learning Algorithms
