@@ -1,16 +1,31 @@
-# This is a sample Python script.
+# بسم الله الرحمن الرحيم
+import pandas as pd
+from nltk.corpus import stopwords
+from sklearn.model_selection import train_test_split
+import re
+# import numpy as np
+# import nltk
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#nltk.download('stopwords')
+# print(stopwords.words('english'))
+
+df = pd.read_csv('chatgpt_reviews.csv')
+df = df.dropna()
+
+stop_words = set(stopwords.words('english'))
+
+def clean_text(text):
+    text = re.sub('[^a-zA-Z]', ' ', text)
+    text = text.lower()
+    words = text.split()
+    words = [word for word in words if word not in stop_words]
+    return ' '.join(words)
+
+df['Review'] = df['Review'].apply(clean_text)
+df['label'] = df['label'].map({'POSITIVE': 1, 'NEGATIVE': 0})
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+df.to_csv('clean_reviews.csv', index=False)
+print("Cleaned data saved to 'clean_reviews.csv'")
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
