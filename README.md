@@ -15,6 +15,8 @@ This project implements a complete sentiment classification workflow on a real-w
   - `review_text` – the raw user review  
   - `sentiment` – label (“Positive” or “Negative”)
 
+## Project Report 📝
+[Click Here](https://docs.google.com/document/d/1Aq53bhumKfWxnNSfl_nPe-mjO_PYSbtzMYPOowRATsM/edit?usp=sharing) to see the Report link on Google Docs
 
 ## Objectives 🎯
 - Preprocess raw text data for NLP tasks.
