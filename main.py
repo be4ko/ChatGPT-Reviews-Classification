@@ -7,7 +7,6 @@ import re
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
-# from tensorflow.keras.layers import Embeding, SimpleRNN, LSTM, Dense
 from tensorflow.keras.layers import Embedding, SimpleRNN, LSTM, Dense, Dropout, Bidirectional, GlobalMaxPooling1D, \
     Conv1D, MaxPooling1D
 from tensorflow.keras.regularizers import l2
@@ -58,18 +57,15 @@ X_test_seq = tokenizer.texts_to_sequences(X_test)
 max_length = max(len(seq) for seq in X_train_seq)
 vocab_size = len(tokenizer.word_index) + 1
 
-print(vocab_size)
 
 X_train_pad = pad_sequences(X_train_seq, maxlen=max_length, padding='post')
 X_test_pad = pad_sequences(X_test_seq, maxlen=max_length, padding='post')
 
 
-# Model creation function
 def rnn_model():
     model = Sequential([
         Embedding(vocab_size, 128, input_length=max_length),
         Bidirectional(SimpleRNN(64, return_sequences=True)),
-        Dropout(0.3),
         Bidirectional(SimpleRNN(64)),
         Dropout(0.3),
         Dense(32, activation='relu', kernel_regularizer=l2(0.001)),
@@ -93,13 +89,11 @@ def lstm_model():
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     return model
 
-# Train and evaluate SimpleRNN
 rnn_model = rnn_model()
 rnn_model.fit(X_train_pad, y_train, epochs=10, batch_size=128, validation_split=0.1)
 rnn_acc = rnn_model.evaluate(X_test_pad, y_test, verbose=0)[1]
 print(f"SimpleRNN Test Accuracy: {rnn_acc:.4f}")
 
-# Train and evaluate LSTM
 lstm_model = lstm_model()
 lstm_model.fit(X_train_pad, y_train, epochs=10, batch_size=128, validation_split=0.1)
 lstm_acc = lstm_model.evaluate(X_test_pad, y_test, verbose=0)[1]
